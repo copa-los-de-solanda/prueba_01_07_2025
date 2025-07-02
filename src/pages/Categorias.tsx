@@ -1,20 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+type Categoria = {
+  id: number;
+  nombre: string;
+};
+
 const Categorias = () => {
-  const [categorias, setCategorias] = useState<any[]>([]);
+  const [categorias, setCategorias] = useState<Categoria[]>([]);
 
   useEffect(() => {
-    axios.get('nestjs-blog-backend.desarrollo-software.xyz/categories?page=1&limit=10')
-      .then(response => setCategorias(response.data as any[]))
-      .catch(error => console.error(error));
+    axios.get<Categoria[]>('http://tu-api.com/categorias') // cambia la URL
+      .then(res => setCategorias(res.data))
+      .catch(err => console.error(err));
   }, []);
+
   return (
     <div>
       <h2>Listado de Categorías</h2>
       <ul>
-        {categorias.map((cat, i) => (
-          <li key={i}>{cat.nombre}</li>
+        {categorias.map(cat => (
+          <li key={cat.id}>{cat.nombre}</li>
         ))}
       </ul>
     </div>

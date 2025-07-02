@@ -1,14 +1,13 @@
-import { type JSX } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './componentes/Navbar';
 import Footer from './componentes/Footer';
-import Home from '../src/componentes/Bienvenida';
+import Home from './pages/Home';
 import Categorias from './pages/Categorias';
 import NuevaCategoria from './pages/NuevaCategoria';
 import Calculos from './pages/Calculos';
 import Informacion from './pages/Informacion';
 
-function App(): JSX.Element {
+function App() {
   return (
     <Router>
       <Navbar />
