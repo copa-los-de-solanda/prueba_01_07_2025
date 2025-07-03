@@ -3,7 +3,7 @@ import axios from 'axios';
 import Footer from '../componentes/Footer';
 
 type Categoria = {
-  id: number;
+  id: string;
   nombre: string;
 };
 
@@ -11,8 +11,8 @@ const Categorias = () => {
   const [categorias, setCategorias] = useState<Categoria[]>([]);
 
   useEffect(() => {
-    axios.get<Categoria[]>('http://localhost:3000/categories') // cambia la URL
-      .then(res => setCategorias(res.data))
+    axios.get<Categoria[]>('https://nestjs-blog-backend-api.desarrollo-software.xyz/categories/')
+      .then(res => setCategorias(res.data.data.items))
       .catch(err => console.error(err));
   }, []);
 
@@ -21,7 +21,7 @@ const Categorias = () => {
       <h2>Listado de Categorías</h2>
       <ul>
         {categorias.map(cat => (
-          <li key={cat.id}>{cat.nombre}</li>
+          <li key={cat.id}>{cat.name}</li>
         ))}
       </ul>
     </div><Footer /></>
