@@ -9,9 +9,9 @@ import Informacion from './pages/Informacion';
 
 const App: React.FC = () => {
   return (
-    <div style={{ width: '100%', height: '100%' }}>
-      <Router>
-        <Navbar />
+    <Router>
+      <Navbar />
+      <div className="container mt-4">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/categorias" element={<Categorias />} />
@@ -19,10 +19,9 @@ const App: React.FC = () => {
           <Route path="/calculos" element={<Calculos />} />
           <Route path="/informacion" element={<Informacion />} />
         </Routes>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 };
-
 
 export default App;
